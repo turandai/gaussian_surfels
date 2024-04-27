@@ -1,5 +1,6 @@
 *.pyc
 .vscode
+.DS_Store
 output
 build
 diff_rasterization/diff_rast.egg-info
