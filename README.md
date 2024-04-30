@@ -67,7 +67,7 @@ We use screened Poisson surface reconstruction to extract mesh, at this line in 
 poisson_mesh(path, wpos, normal, color, poisson_depth, prune_thrsh)
 ```
 In your output folder, ```xxx_plain.ply``` is the original mesh after Poisson reconstruction with the default depth of 10. For scenes in larger scales, you may use a higher depth level. For a smoother mesh, you may decrease the depth value.
-We prune the Poisson mesh with a certain threshold to remove outlying faces and output ```xxx_pruned.ply```. This process sometimes may over-prune the mesh and results in holes. You may adjust the "prune_thrsh" parameter accordingly.
+We prune the Poisson mesh with a certain threshold to remove outlying faces and output ```xxx_pruned.ply```. This process sometimes may over-prune the mesh and results in holes. You may increase the "prune_thrsh" parameter accordingly.
 
 ## Evalutation
 To evaluate the geometry accuracy on DTU, you have to download the [DTU](https://roboimagedata.compute.dtu.dk/?page_id=36) ground truth point cloud. 
