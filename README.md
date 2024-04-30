@@ -29,7 +29,7 @@ conda env create --file environment.yml
 conda activate gaussian_surfels
 ```
 
-If you want to recompile and reinstall the CUDA rasterizer:
+If you need to recompile and reinstall the CUDA rasterizer:
 ```shell
 cd submodules/diff-gaussian-rasterization
 python setup.py install && pip install .
@@ -37,7 +37,7 @@ python setup.py install && pip install .
 
 ## Data Preparation
 We test our method on subsets of on [DTU](https://roboimagedata.compute.dtu.dk/?page_id=36) and [BlendedMVS](https://github.com/YoYo000/BlendedMVS) datasets. 
-We select 15 scenes from DTU and 18 scenes from BlendedMVS and preprocess and normalize the data following [IDR](https://github.com/lioryariv/idr) data convention.
+We select 15 scenes from DTU and 18 scenes from BlendedMVS, then preprocess and normalize the data following [IDR](https://github.com/lioryariv/idr) data convention.
 We also adopt [Omnidata](https://github.com/EPFL-VILAB/omnidata) to generate monocular normal prior.
 You can download the data from [here]().
 
