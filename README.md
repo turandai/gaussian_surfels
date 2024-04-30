@@ -11,7 +11,7 @@ Wenxiang Xie,
 | [arXiv]() 
 | [Data](https://huggingface.co/collections/turandai/gaussian-surfel-datasets-662cf9e2137b72821642add4) |<br>
 
-This repository is the official implementation of the SIGGRAPH 24' conference paper "*High-quality Surface Reconstruction using Gaussian Surfels*". The code builds upon the fantastic [3DGS](https://github.com/graphdeco-inria/gaussian-splatting) code base and borrows the data preprocessing/loading part from [IDR](https://github.com/lioryariv/idr).
+This repository is the official implementation of the SIGGRAPH 2024 conference paper "*High-quality Surface Reconstruction using Gaussian Surfels*". The code builds upon the fantastic [3DGS](https://github.com/graphdeco-inria/gaussian-splatting) code base and borrows the data preprocessing/loading part from [IDR](https://github.com/lioryariv/idr).
 
 
 ## Environment Setup
