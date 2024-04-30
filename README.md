@@ -1,8 +1,17 @@
 # High-quality Surface Reconstruction using Gaussian Surfels
-Pinxuan Dai*, Jiamin Xu*, Wenxiang Xie, Xinguo Liu, Huamin Wang, Weiwei Xu<sup>†</sup><br>
-| [Project](https://turandai.github.io/projects/gaussian_surfels/) | [Paper]() | [arXiv]() | [Data]()<br>
+[Pinxuan Dai](https://turandai.github.io/)\*, 
+[Jiamin Xu](https://superxjm.github.io/)\*, 
+Wenxiang Xie, 
+[Xinguo Liu](http://www.cad.zju.edu.cn/home/xgliu),
+[Huamin Wang](https://wanghmin.github.io/index.html),
+[Weiwei Xu](http://www.cad.zju.edu.cn/home/weiweixu/index.htm)<sup>†</sup>
 
-This repository is the official implementation of the SIGGRAPH 24' conference paper "*High-quality Surface Reconstruction using Gaussian Surfels*". The code is mainly build upon the fantastic [3DGS](https://github.com/graphdeco-inria/gaussian-splatting) and borrows the data loading part from [IDR](https://github.com/lioryariv/idr).
+| [Project](https://turandai.github.io/projects/gaussian_surfels/) 
+| [Paper]() 
+| [arXiv]() 
+| [Data](https://huggingface.co/collections/turandai/gaussian-surfel-datasets-662cf9e2137b72821642add4) |<br>
+
+This repository is the official implementation of the SIGGRAPH 24' conference paper "*High-quality Surface Reconstruction using Gaussian Surfels*". The code builds upon the fantastic [3DGS](https://github.com/graphdeco-inria/gaussian-splatting) code base and borrows the data preprocessing/loading part from [IDR](https://github.com/lioryariv/idr).
 
 
 ## Environment Setup
@@ -24,7 +33,7 @@ conda activate gaussian_surfels
 We test our method on subsets of on [DTU](https://roboimagedata.compute.dtu.dk/?page_id=36) and [BlendedMVS](https://github.com/YoYo000/BlendedMVS) datasets. 
 We select 15 scenes from DTU and 18 scenes from BlendedMVS and preprocess and normalize the data following [IDR](https://github.com/lioryariv/idr) data convention.
 We also adopt [Omnidata](https://github.com/EPFL-VILAB/omnidata) to generate monocular normal prior.
-All data needed can be downloaded from [here]().
+You can download the data from [here](https://huggingface.co/collections/turandai/gaussian-surfel-datasets-662cf9e2137b72821642add4).
 
 
 To test on your own unposed data, we recommend to use [COLMAP](https://github.com/colmap/colmap) for SfM initialization. To estimate monocular normal for your own data, please follow [Omnidata](https://github.com/EPFL-VILAB/omnidata) for additional environment setup, and download the pretrained model:
