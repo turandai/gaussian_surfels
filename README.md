@@ -11,7 +11,7 @@ Wenxiang Xie,
 | [arXiv](https://arxiv.org/abs/2404.17774v2) 
 | [Data](https://unimelbcloud-my.sharepoint.com/:f:/g/personal/xwwu1_student_unimelb_edu_au/EsdTFxnWonBMojuDmRorijkBCzvmAWA3eaRTn1q4M0axiQ?e=calgJN) |<br>
 
-This repository is the official implementation of the SIGGRAPH 2024 conference paper "*High-quality Surface Reconstruction using Gaussian Surfels*". The code builds upon the fantastic [3DGS](https://github.com/graphdeco-inria/gaussian-splatting) code base and borrows the data preprocessing/loading part from [IDR](https://github.com/lioryariv/idr).
+The code builds upon the fantastic [3DGS](https://github.com/graphdeco-inria/gaussian-splatting) code base and borrows the data preprocessing/loading part from [IDR](https://github.com/lioryariv/idr).
 
 
 ## Environment Setup
