@@ -7,8 +7,8 @@ Wenxiang Xie,
 [Weiwei Xu](http://www.cad.zju.edu.cn/home/weiweixu/index.htm)<sup>†</sup>
 
 | [Project](https://turandai.github.io/projects/gaussian_surfels/) 
-| [Paper](https://arxiv.org/pdf/2404.17774v2) 
-| [arXiv](https://arxiv.org/abs/2404.17774v2) 
+| [Paper](https://arxiv.org/pdf/2404.17774) 
+| [arXiv](https://arxiv.org/abs/2404.17774) 
 | [Data](https://unimelbcloud-my.sharepoint.com/:f:/g/personal/xwwu1_student_unimelb_edu_au/EsdTFxnWonBMojuDmRorijkBCzvmAWA3eaRTn1q4M0axiQ?e=calgJN) |<br>
 
 The code builds upon the fantastic [3DGS](https://github.com/graphdeco-inria/gaussian-splatting) code base and borrows the data preprocessing/loading part from [IDR](https://github.com/lioryariv/idr).
