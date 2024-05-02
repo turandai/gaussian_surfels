@@ -19,7 +19,7 @@ We did our experiments on Ubuntu 22.04.3, CUDA 11.8, and conda environment on Py
 
 Clone this repository:
 ```shell
-git clone https://github.com/turandai/gaussian-surfels
+git clone https://github.com/turandai/gaussian_surfels.git
 cd gaussian_surfels
 ```
 
