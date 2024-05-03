@@ -45,7 +45,7 @@ You can download the data from [here](https://unimelbcloud-my.sharepoint.com/:f:
 To test on your own unposed data, we recommend to use [COLMAP](https://github.com/colmap/colmap) for SfM initialization. To estimate monocular normal for your own data, please follow [Omnidata](https://github.com/EPFL-VILAB/omnidata) for additional environment setup. Download the pretrained model and run the normal estimation by:
 ```shell
 cd submodules/omnidata
-sh download_surface_normal_models
+sh tools/download_surface_normal_models.sh
 python estimate_normal.py --img_path path/to/your/image/directory
 ```
 
