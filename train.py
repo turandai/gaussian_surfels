@@ -121,9 +121,9 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
 
         loss_surface = cos_loss(resize_image(normal, 1), resize_image(d2n, 1), thrsh=np.pi*1/10000 , weight=1)
         
-        opac_ = gaussians.get_opacity
+        opac_ = gaussians.get_opacity - 0.5
         opac_mask = torch.gt(opac_, 0.01) * torch.le(opac_, 0.99)
-        loss_opac = torch.exp(-(opac_ - 0.5)**2 * 20)
+        loss_opac = torch.exp(-(opac_ * opac_) * 20)
         loss_opac = (loss_opac * opac_mask).mean()
         
         curv_n = normal2curv(normal, mask_vis)
