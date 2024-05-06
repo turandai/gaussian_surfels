@@ -58,7 +58,7 @@ class ModelParams(ParamGroup):
         self._pcl_path = ""
         # add
         self.surface = True
-        self.with_mask = True
+        self._use_mask = 1
         self.normalize_depth = True
         self.perpix_depth = True
         self.mono_normal = True
