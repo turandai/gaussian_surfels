@@ -141,7 +141,12 @@ def resize_image(img, factor, mode='bilinear'):
         resize = img.clone()
     dtype = resize.dtype
 
-    resize = torch.nn.functional.interpolate(resize[None].to(torch.float32), scale_factor=1/factor, mode=mode)[0].to(dtype)
+    if type(factor) == int:
+        resize = torch.nn.functional.interpolate(resize[None].to(torch.float32), scale_factor=1/factor, mode=mode)[0].to(dtype)
+    elif len(factor) == 2:
+        resize = torch.nn.functional.interpolate(resize[None].to(torch.float32), size=factor, mode=mode)[0].to(dtype)
+    # else:
+
     if is_np:
         resize = resize.numpy()
     # print(type(img))
