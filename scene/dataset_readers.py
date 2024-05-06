@@ -207,15 +207,6 @@ def readColmapSceneInfo(path, images, eval, llffhold=8):
             xyz, rgb, _ = read_points3D_binary(bin_path)
         except:
             xyz, rgb, _ = read_points3D_text(txt_path)
-            
-        # extend initial points to multiple disks
-        # for i in range(8):
-        # xyz = np.concatenate([xyz for _ in range(8)], 0)
-        # rgb = np.concatenate([rgb for _ in range(8)], 0)
-        # normal = np.random.rand(len(xyz), 3) - 0.5
-        # normal /= np.linalg.norm(normal, 2, 1, True)
-        # print(xyz.shape, normal.shape)
-        # exit()
 
         storePly(ply_path, xyz, rgb)
     try:
