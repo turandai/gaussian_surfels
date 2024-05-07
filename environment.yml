@@ -20,6 +20,7 @@ dependencies:
     - scikit-image
     - numba
     - open3d
+    - trimesh
     - "git+https://github.com/facebookresearch/pytorch3d.git"
     - submodules/diff-gaussian-rasterization
     - submodules/simple-knn
