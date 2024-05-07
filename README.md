@@ -75,7 +75,7 @@ For BlendedMVS evaluation, we fused, denoised and normalized the ground truth mu
 We follow previous work to use [this](https://github.com/jzhangbs/DTUeval-python) code to calculate the Chamfer distance between the ground truth point cloud and the reconstructed mesh.
 ```shell
 # DTU evaluation:
-python eval.py --dataset dtu --source_path path/to/your/data/directory --mesh_path path/to/your/mesh --dtu_gt_path path/to/DTU/SampleSet/MVSData --dtu_scanId ID
+python eval.py --dataset dtu --source_path path/to/your/data/directory --mesh_path path/to/your/mesh --dtu_gt_path path/to/DTU/MVSData --dtu_scanId ID
 
 # BlendedMVS evaluation:
 python eval.py --dataset bmvs --source_path path/to/your/data/directory --mesh_path path/to/your/mesh
