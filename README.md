@@ -76,7 +76,6 @@ We follow previous work to use [this](https://github.com/jzhangbs/DTUeval-python
 ```shell
 # DTU evaluation:
 python eval.py --dataset dtu --source_path path/to/your/data/directory --mesh_path path/to/your/mesh --dtu_gt_path path/to/DTU/MVSData --dtu_scanId ID
-
 # BlendedMVS evaluation:
 python eval.py --dataset bmvs --source_path path/to/your/data/directory --mesh_path path/to/your/mesh
 ```
