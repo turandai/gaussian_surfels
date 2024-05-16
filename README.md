@@ -1,10 +1,10 @@
 # High-quality Surface Reconstruction using Gaussian Surfels
-[Pinxuan Dai](https://turandai.github.io/)\*, 
+<!-- [Pinxuan Dai](https://turandai.github.io/)\*, 
 [Jiamin Xu](https://superxjm.github.io/)\*, 
 Wenxiang Xie, 
 [Xinguo Liu](http://www.cad.zju.edu.cn/home/xgliu),
 [Huamin Wang](https://wanghmin.github.io/index.html),
-[Weiwei Xu](http://www.cad.zju.edu.cn/home/weiweixu/index.htm)<sup>†</sup>
+[Weiwei Xu](http://www.cad.zju.edu.cn/home/weiweixu/index.htm)<sup>†</sup> -->
 
 | [Project](https://turandai.github.io/projects/gaussian_surfels/) 
 | [Paper](https://arxiv.org/pdf/2404.17774) 
