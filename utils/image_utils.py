@@ -371,41 +371,22 @@ def reproject_confidence(depth, cam_cur, mask_cur, cams, extractor):
     exit()
     return confidence
 
-def cross_sample(depth, cam_cur, mask_cur, cams, extractor, flatten=False):
+def cross_sample(depth, cam_cur, mask_cur, cams, extractor=None, flatten=False):
     wpos = depth2wpos(depth, mask_cur, cam_cur)
-    wpos = wpos.reshape([3, -1]).t()#[mask_cur.reshape([-1])]
-    # print(wpos.shape)
+    wpos = wpos.reshape([3, -1]).t()
     for i in cams:
         i.to_device()
     cpos, ndc, inMask, outView = world2scrn(wpos, cams, 0)
     ndc = ndc.permute([1, 0, 2]).permute([1, 0, 2])
     feat_cur = cam_cur.get_feat(extractor)
-    # feat_cur = feat_cur.reshape([len(feat_cur), -1]).t()#[mask_cur.reshape([-1])][None]
-    # print(scrnPos.shape, keep.shape)
-    feats = torch.stack([i.get_feat(extractor) for i in cams], 0)
-    # print(feats.shape, ndc[:,:,None].shape)
+    feats = torch.stack([i.get_feat(extractor)[0] for i in cams], 0)
+    # print(feats.shape, ndc[::, None].shape)
     feat_spl = torch.nn.functional.grid_sample(feats, ndc[:, :, None], align_corners=False)
-    # exit()
-
     visible = (inMask * ~outView)[:, None]
-
-    feat_spl = feat_spl[..., 0] * visible * mask_cur.reshape([1, -1])
-
-    feat_cur = (feat_cur * mask_cur).reshape([1, 3, -1])
-
-    # print(feat_cur.shape, feat_spl.shape, visible.shape)
-    # feat_mean = ((feat_spl * visible).sum(0) / visible.sum(0)) * mask_cur
-    # feat_mean_ = feat_spl.mean(0)
-    # # img = torch.cat([feat_cur.expand_as(feats), feats, feat_spl, visible.expand_as(feats)], 2)
-    # img = torch.cat([feat_mean, feat_mean_], 2)
-    # save_image(img, 'test/test.png')
-
-
-
-    # exit()
-    # feat_cur_img = feat_cur.reshape([1, 600, 800, 3]) #* inMask[..., None]
-    # feat_cur_img = feat_cur_img.permute([0, 3, 1, 2])
-    # exit()
+    feat_cur = (feat_cur * mask_cur)
+    shape_spl = [feat_spl.shape[0], feat_cur.shape[1], feat_cur.shape[2], feat_cur.shape[3]]
+    feat_spl = (feat_spl[..., 0] * visible * mask_cur.reshape([1, -1])).reshape(shape_spl)
+    visible = visible.reshape([feat_spl.shape[0], 1, feat_cur.shape[2], feat_cur.shape[3]])
     return feat_cur, feat_spl, visible
 
 

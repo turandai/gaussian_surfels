@@ -86,12 +86,6 @@ def render_set(model_path, use_mask, name, iteration, views, gaussians, pipeline
         mesh_path = f'{model_path}/poisson_mesh_{poisson_depth}'
         
         poisson_mesh(mesh_path, resampled[:, :3], resampled[:, 3:6], resampled[:, 6:], poisson_depth, 1 * 1e-4)
-        
-        # cd = eval_dtu(int(model_path.split('/')[-1].split('_')[0][4:]), mesh_path.split('.')[0] + '_pruned.ply')
-        # cd = eval_bmvs(model_path.split('/')[-1].split('_')[0], mesh_path.split('.')[0] + '_pruned.ply')
-        cd = 0
-        with open(f"{model_path}/eval_result.txt", 'a') as f:
-            f.write(f'CD: {cd}\n')
 
 
 
