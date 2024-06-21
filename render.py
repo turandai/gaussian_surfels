@@ -76,6 +76,7 @@ def render_set(model_path, use_mask, name, iteration, views, gaussians, pipeline
             save_image(image.cpu(), os.path.join(render_path, '{}'.format(view.image_name) + ".png"))
             save_image((torch.cat([gt_image, mask_gt], 0)).cpu(), os.path.join(gts_path, '{}'.format(view.image_name) + ".png"))
 
+        view.to_cpu()
 
     # os.system(f"rm {model_path}/eval_result.txt")
     with open(f"{model_path}/eval_result.txt", 'a') as f:

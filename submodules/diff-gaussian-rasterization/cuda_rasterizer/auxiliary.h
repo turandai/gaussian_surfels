@@ -42,12 +42,12 @@ __device__ const float SH_C3[] = {
 __forceinline__ __device__ float ndc2Pix(float v, int S, float prcp)
 {
 	// return ((v + 1.0) * S - 1.0) * 0.5;
-	return ((v + 1.0) * S - 1.0) * 0.5 + S * (prcp - 0.5);
+	return ((v + 1.0) * S - 1.0) * 0.5; //+ S * (prcp - 0.5);
 }
 
 __forceinline__ __device__ float pix2Ndc(float v, int S, float prcp)
 {
-	return ((v - S * (prcp - 0.5)) * 2.0 + 1.0) / S - 1.0;
+	return ((v - S * (prcp - 0.5)) * 2.0 + 1.0); /// S - 1.0;
 }
 
 __forceinline__ __device__ void getRect(const float2 p, int max_radius, uint2& rect_min, uint2& rect_max, dim3 grid)
