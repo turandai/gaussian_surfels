@@ -142,7 +142,7 @@ def eval(in_file, scene, dataset_dir, S, T):
     patch = 60
     thresh = 0.2  # downsample density
 
-    pbar = tqdm(total=9)
+    pbar = tqdm(total=8)
     pbar.set_description('read data mesh')
 
     vertices = np.asarray(data_mesh.vertices)

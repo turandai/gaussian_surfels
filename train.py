@@ -131,15 +131,15 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         loss_curv = l1_loss(curv_n * 1, 0) #+ 1 * l1_loss(curv_d2n, 0)
         
         loss = 1 * loss_rgb
-        loss += 1 * loss_mask
+        loss += 0.1 * loss_mask
         loss += (0.01 + 0.1 * min(2 * iteration / opt.iterations, 1)) * loss_surface
         # loss += (0.00 + 0.1 * min(1 * iteration / opt.iterations, 1)) * loss_surface
-        loss += (0.005 - ((iteration / opt.iterations)) * 0.0) * loss_curv
-        loss += loss_opac * 0.01
+        loss += 0.005 * loss_curv
+        loss += 0.01* loss_opac
 
         # mono = None
         if mono is not None:
-            loss += (0.04 - ((iteration / opt.iterations)) * 0.03) * loss_monoN
+            loss += (0.04 - ((iteration / opt.iterations)) * 0.02) * loss_monoN
             # loss += 0.01 * loss_depth
 
         loss.backward()
@@ -214,7 +214,7 @@ def prepare_output_and_logger(args):
         else:
             unique_str = str(uuid.uuid4())
 
-        args.model_path = os.path.join("./output/test516", f"{args.source_path.split('/')[-1]}_{unique_str[0:10]}")
+        args.model_path = os.path.join("./output", f"{args.source_path.split('/')[-1]}_{unique_str[0:10]}")
         
         
     # Set up output folder

@@ -86,7 +86,7 @@ def render_set(model_path, use_mask, name, iteration, views, gaussians, pipeline
         resampled = torch.cat(resampled, 0)
         mesh_path = f'{model_path}/poisson_mesh_{poisson_depth}'
         
-        poisson_mesh(mesh_path, resampled[:, :3], resampled[:, 3:6], resampled[:, 6:], poisson_depth, 1 * 1e-4)
+        poisson_mesh(mesh_path, resampled[:, :3], resampled[:, 3:6], resampled[:, 6:], poisson_depth, 3 * 1e-5)
 
 
 
