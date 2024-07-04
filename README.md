@@ -88,8 +88,7 @@ python eval.py --dataset bmvs --source_path path/to/your/data/directory --mesh_p
   title     = {High-quality Surface Reconstruction using Gaussian Surfels},
   publisher = {Association for Computing Machinery},
   booktitle = {SIGGRAPH 2024 Conference Papers},
-  year      = {2024},
-  doi       = {10.1145/3641519.3657441}
+  year      = {2024}
 }</code></pre>
   </div>
 </section>
