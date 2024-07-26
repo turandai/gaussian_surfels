@@ -19,7 +19,7 @@ from utils.general_utils import knn_pcl
 from pytorch3d.ops import knn_points
 
 def l1_loss(network_output, gt, weight=1):
-    return torch.abs((network_output - gt)).mean()
+    return torch.abs((network_output - gt) * weight).mean()
 
 def cos_loss(output, gt, thrsh=0, weight=1):
     cos = torch.sum(output * gt * weight, 0)

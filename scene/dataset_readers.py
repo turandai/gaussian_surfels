@@ -446,11 +446,11 @@ def readIDRSceneInfo(path, eval, testskip=8):
     cam_infos = readIDRCameras(path)
 
     if eval:
-        test_cams = [i for i in range(len(cam_infos)) if i % testskip == 0]
+        # test_cams = [i for i in range(len(cam_infos)) if i % testskip == 0]
         # test split following NeuS2
-        # test_cams = [8, 13, 16, 21, 26, 31, 34]
-        # if len(cam_infos) > 56:
-        #     test_cams.append(56)
+        test_cams = [8, 13, 16, 21, 26, 31, 34]
+        if len(cam_infos) > 56:
+            test_cams.append(56)
 
         train_cam_infos = [c for idx, c in enumerate(cam_infos) if idx not in test_cams]
         test_cam_infos = [c for idx, c in enumerate(cam_infos) if idx in test_cams]

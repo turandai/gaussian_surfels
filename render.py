@@ -70,7 +70,7 @@ def render_set(model_path, use_mask, name, iteration, views, gaussians, pipeline
             outofmask = mask_vis * (1 - mask_gt)
             mask_vis_wrt = outofmask * (opac - 1) + mask_vis
             img_wrt = torch.cat([gt_image, image, normal_wrt, depth_wrt], 2)
-            wrt_mask = torch.cat([opac * mask_gt, mask_vis_wrt, mask_vis_wrt, mask_vis_wrt], 2)
+            wrt_mask = torch.cat([mask_gt, mask_vis_wrt, mask_vis_wrt, mask_vis_wrt], 2)
             img_wrt = torch.cat([img_wrt, wrt_mask], 0)
             save_image(img_wrt.cpu(), os.path.join(info_path, '{}'.format(view.image_name) + f".png"))
             save_image(image.cpu(), os.path.join(render_path, '{}'.format(view.image_name) + ".png"))
@@ -106,6 +106,13 @@ def render_sets(dataset : ModelParams, iteration : int, pipeline : PipelineParam
         if not skip_train:
              render_set(dataset.model_path, True, "train", scene.loaded_iter, scene.getTrainCameras(scales[0]), gaussians, pipeline, background, write_image, poisson_depth)
 
+
+        # from eval import eval_dtu
+        # scanId = int(dataset.source_path.split('/')[-1][4:])
+        # mesh_path = f'{dataset.model_path}/poisson_mesh_{poisson_depth}_pruned.ply'
+        # cd = eval_dtu(dataset.source_path, scanId, '../DTU/SampleSet/MVSData', mesh_path)
+        # with open(f"{dataset.model_path}/eval_result.txt", 'a') as f:
+        #     f.write(f'CD: {np.mean(cd)}\n')
 
 
 if __name__ == "__main__":

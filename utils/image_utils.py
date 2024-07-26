@@ -283,8 +283,11 @@ def world2scrn(xyz, cams, pad):
     utils_mod = load(name="cuda_utils", sources=["utils/ext.cpp", "utils/cuda_utils.cu"])
     device = xyz.device
     mask = [i.get_gtMask().to(device).to(torch.float32) for i in cams]
-    mask = [i + utils_mod.contour_padding(i, i.to(torch.bool), pad) for i in mask]
-    mask = torch.cat(mask, 0)
+    if pad >= 0:
+        pool = torch.nn.MaxPool2d(9, stride=1, padding=pad)
+    else:
+        pool = torch.nn.MinPool2d(9, stride=1, padding=-pad)
+    mask = pool(torch.cat(mask, 0))
 
     worldPos = xyz#.detach()
     worldPos = torch.cat([worldPos, torch.ones_like(worldPos[:, :1])], 1)[None, :, None]
@@ -302,7 +305,7 @@ def world2scrn(xyz, cams, pad):
 
     outViewX = torch.le(projPos[..., 0], -1) + torch.gt(projPos[..., 0], 1)
     outViewY = torch.le(projPos[..., 1], -1) + torch.gt(projPos[..., 1], 1)
-    outView = outViewX + outViewY + outViewZ
+    outView = outViewX + outViewY #+ outViewZ
     # outAllView = torch.all(outView, dim=0)
 
     reso = torch.cat([torch.tensor([[[i.image_width, i.image_height]]]) for i in cams], 0).to(device)
@@ -371,24 +374,24 @@ def reproject_confidence(depth, cam_cur, mask_cur, cams, extractor):
     exit()
     return confidence
 
-def cross_sample(depth, cam_cur, mask_cur, cams, extractor=None, flatten=False):
+def cross_sample(depth, cam_cur, mask_cur, cams, feats):
     wpos = depth2wpos(depth, mask_cur, cam_cur)
     wpos = wpos.reshape([3, -1]).t()
     for i in cams:
         i.to_device()
     cpos, ndc, inMask, outView = world2scrn(wpos, cams, 0)
     ndc = ndc.permute([1, 0, 2]).permute([1, 0, 2])
-    feat_cur = cam_cur.get_feat(extractor)
-    feats = torch.stack([i.get_feat(extractor)[0] for i in cams], 0)
+    feat_cur = feats[:1]
+    feat_adj = feats[1:]
+    # print(feat_cur.shape, feat_adj.shape)
     # print(feats.shape, ndc[::, None].shape)
-    feat_spl = torch.nn.functional.grid_sample(feats, ndc[:, :, None], align_corners=False)
+    feat_spl = torch.nn.functional.grid_sample(feat_adj, ndc[:, :, None], align_corners=False)
     visible = (inMask * ~outView)[:, None]
     feat_cur = (feat_cur * mask_cur)
     shape_spl = [feat_spl.shape[0], feat_cur.shape[1], feat_cur.shape[2], feat_cur.shape[3]]
     feat_spl = (feat_spl[..., 0] * visible * mask_cur.reshape([1, -1])).reshape(shape_spl)
     visible = visible.reshape([feat_spl.shape[0], 1, feat_cur.shape[2], feat_cur.shape[3]])
     return feat_cur, feat_spl, visible
-
 
 
 def mask_prune(pts, cams, pad=4, batch_size=16):
