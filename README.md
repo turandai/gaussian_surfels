@@ -84,11 +84,13 @@ python eval.py --dataset bmvs --source_path path/to/your/data/directory --mesh_p
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@inproceedings{Dai2024GaussianSurfels,
-  author    = {Dai, Pinxuan and Xu, Jiamin and Xie, Wenxiang and Liu, Xinguo and Wang, Huamin and Xu, Weiwei},
-  title     = {High-quality Surface Reconstruction using Gaussian Surfels},
+  author = {Dai, Pinxuan and Xu, Jiamin and Xie, Wenxiang and Liu, Xinguo and Wang, Huamin and Xu, Weiwei},
+  title = {High-quality Surface Reconstruction using Gaussian Surfels},
   publisher = {Association for Computing Machinery},
-  booktitle = {SIGGRAPH 2024 Conference Papers},
-  year      = {2024}
+  booktitle = {ACM SIGGRAPH 2024 Conference Papers},
+  year = {2024},
+  articleno = {22},
+  numpages = {11}
 }</code></pre>
   </div>
 </section>
