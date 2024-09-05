@@ -550,7 +550,8 @@ class GaussianModel:
         for c in cams_batch:
             _, _, inMask, outView = world2scrn(self._xyz.detach(), c, pad)
             visible = inMask.all(0) * ~(outView.all(0))
-            self.prune_points(~visible)
+            if list(visible.shape) != []:
+                self.prune_points(~visible)
 
     def to_occ_grid(self, cutoff, grid_dim_max=512, bound_overwrite=None):
         if bound_overwrite is None:
