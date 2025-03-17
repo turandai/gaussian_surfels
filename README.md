@@ -9,7 +9,7 @@ Wenxiang Xie,
 | [Project](https://turandai.github.io/projects/gaussian_surfels/) 
 | [Paper](https://arxiv.org/pdf/2404.17774) 
 | [arXiv](https://arxiv.org/abs/2404.17774) 
-| [Data](https://huggingface.co/collections/turandai/gaussian-surfel-datasets-662cf9e2137b72821642add4)|<br>
+| [Data](https://huggingface.co/collections/turandai/gaussian-surfel-datasets-662cf9e2137b72821642add4) |<br>
 
 The code builds upon the fantastic [3DGS](https://github.com/graphdeco-inria/gaussian-splatting) code base and borrows the data preprocessing/loading part from [IDR](https://github.com/lioryariv/idr).
 
